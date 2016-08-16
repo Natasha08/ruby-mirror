@@ -7,15 +7,13 @@
 #user creates a new session
 require 'rails_helper'
 
-feature "user logs in" do
-  scenario "the article is created" do
+feature "Login" do
+  scenario "the user logs in" do
     visit root_path
     click_on "Login"
     fill_in "Email", with: 'test_user@test.com'
     fill_in "Password", with: 'test_password'
-    expect do
-      click_on "Log in"
-    end
-    puts page
+    click_on "Log in"
+      # expect(page).to have_selector(".header .username", :text => "jdoe")
   end
 end

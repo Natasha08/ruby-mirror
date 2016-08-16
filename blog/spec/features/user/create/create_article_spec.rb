@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "user creates an article" do
   let!(:user) { create :user }
-  
+
   before do
     visit articles_path
     fill_in "Email", with: 'test_user@test.com'
