@@ -4,10 +4,7 @@ feature "user creates an article" do
   let!(:user) { create :user }
 
   before do
-    visit articles_path
-    fill_in "Email", with: 'test_user@test.com'
-    fill_in "Password", with: 'test_password'
-    click_on "Log in"
+    user_sign_in
   end
   scenario "the article is created" do
     click_on "New article"

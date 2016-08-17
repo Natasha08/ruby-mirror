@@ -5,11 +5,7 @@ feature "user deletes an article" do
   let!(:article) { create :article }
 
   before do
-    visit root_path
-    click_on "Login"
-    fill_in "Email", with: 'test_user@test.com'
-    fill_in "Password", with: 'test_password'
-    click_on "Log in"
+    user_sign_in
   end
   scenario "the article is deleted" do
     visit articles_path
