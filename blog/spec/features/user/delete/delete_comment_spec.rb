@@ -13,7 +13,6 @@ feature "user deletes a comment" do
     within "tr", text:article.title do
       click_on "Edit"
     end
-    save_and_open_page
     click_on "Delete Comment"
     expect(Comment.find_by_id(article.id)).to be_nil
   end

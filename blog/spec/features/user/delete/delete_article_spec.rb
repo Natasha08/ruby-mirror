@@ -9,7 +9,6 @@ feature "user deletes an article" do
   end
   scenario "the article is deleted" do
     visit articles_path
-    save_and_open_page
     within "tr", text:article.title do
       click_on "Delete"
     end
