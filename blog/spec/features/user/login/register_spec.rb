@@ -1,7 +1,30 @@
-#user navigates to the registration page
+require 'rails_helper'
 
-#user fills out the form correctly
+feature "The User Registers" do
 
-#user presses submit, becomes registered and logged in, navigating to correct page.
+  scenario "by successfully signing up" do
+    visit root_path
+    click_on "Login"
+    click_on "Sign up"
+    fill_in "Email", with: 'test_user2@test.com'
+    fill_in "Password", with: 'test_password2'
+    fill_in "Password confirmation", with: 'test_password2'
+    click_on "Sign up"
 
-#user cannot be created with a bogus email, and password
+    expect(page).to have_content("You have signed up successfully")
+  end
+
+  let!(:user) { create :user }
+
+  scenario "incorrectly with existing user info" do
+    visit root_path
+    click_on "Login"
+    click_on "Sign up"
+    fill_in "Email", with: 'test_user@test.com'
+    fill_in "Password", with: 'test_password'
+    fill_in "Password confirmation", with: 'test_password'
+    click_on "Sign up"
+    
+    expect(page).to have_content("Email has already been taken")
+  end
+end
