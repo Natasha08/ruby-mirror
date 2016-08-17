@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 def user_sign_in
     visit root_path
     click_on "Login"
